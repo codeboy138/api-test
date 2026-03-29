@@ -25,72 +25,43 @@
   }
   
   body {
-    background: var(--k); 
-    color: var(--w);
+    background: var(--k); color: var(--w);
     font-family: 'Space Mono', monospace;
-    line-height: 1.4; 
-    overflow-x: hidden;
-    height: 100vh; 
-    display: flex; 
-    flex-direction: column;
+    line-height: 1.4; overflow-x: hidden;
+    height: 100vh; display: flex; flex-direction: column;
   }
 
-  /* Header Navigation */
   nav {
-    padding: 1.2rem 1.5rem; 
-    background: var(--k);
+    padding: 1.2rem 1.5rem; background: var(--k);
     border-bottom: 1px solid #333;
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center;
-    position: sticky; 
-    top: 0; 
-    z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    position: sticky; top: 0; z-index: 100;
   }
   .logo { 
-    font-family: 'Bebas Neue', sans-serif; 
-    font-size: 1.8rem; 
-    color: var(--y); 
-    text-decoration: none; 
-    letter-spacing: 1px; 
+    font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; 
+    color: var(--y); text-decoration: none; letter-spacing: 1px; 
   }
   .logo span { color: var(--r); }
 
-  /* Main Content Area */
   main { 
-    flex: 1; 
-    padding: 1.5rem; 
-    overflow-y: auto; 
-    padding-bottom: 180px; /* Action Bar Space */
+    flex: 1; padding: 1.5rem; overflow-y: auto; 
+    padding-bottom: 180px; 
   }
   .title { 
-    font-family: 'Bebas Neue', sans-serif; 
-    font-size: 3.2rem; 
-    line-height: 0.9; 
-    margin-bottom: 0.5rem; 
-    text-transform: uppercase;
+    font-family: 'Bebas Neue', sans-serif; font-size: 3.2rem; 
+    line-height: 0.9; margin-bottom: 0.5rem; text-transform: uppercase;
   }
   .subtitle { 
-    font-size: 12px; 
-    color: #888; 
-    margin-bottom: 2rem; 
-    text-transform: uppercase; 
-    letter-spacing: 1px; 
+    font-size: 12px; color: #888; margin-bottom: 2rem; 
+    text-transform: uppercase; letter-spacing: 1px; 
   }
 
   /* Upload UI */
   .upload-container {
-    width: 100%; 
-    aspect-ratio: 3/4;
+    width: 100%; aspect-ratio: 3/4;
     border: 2px dashed var(--y);
-    display: flex; 
-    flex-direction: column; 
-    justify-content: center; 
-    align-items: center;
-    cursor: pointer; 
-    position: relative; 
-    overflow: hidden;
-    background: var(--g);
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    cursor: pointer; position: relative; overflow: hidden; background: var(--g);
   }
   #img-preview { width: 100%; height: 100%; object-fit: cover; display: none; }
   .upload-icon { font-size: 2.5rem; margin-bottom: 1rem; }
@@ -99,97 +70,56 @@
   /* Option Grid */
   .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin-top: 1.5rem; }
   .card {
-    border: 1px solid #333; 
-    padding: 1.2rem; 
-    text-align: left;
-    transition: 0.2s; 
-    background: #0a0a0a;
+    border: 1px solid #333; padding: 1.2rem; text-align: left;
+    transition: 0.2s; background: #0a0a0a;
   }
-  .card.active { 
-    border: 2px solid var(--r); 
-    background: rgba(255, 45, 85, 0.1); 
-  }
+  .card.active { border: 2px solid var(--r); background: rgba(255, 45, 85, 0.1); }
   .card-name { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; color: var(--w); }
   .card-tag { font-size: 9px; color: var(--r); text-transform: uppercase; font-weight: 700; }
 
   /* Bottom Fixed Action Bar */
   .action-bar {
-    position: fixed; 
-    bottom: 0; left: 0; right: 0;
-    padding: 1.5rem; 
-    background: linear-gradient(transparent, var(--k) 30%);
+    position: fixed; bottom: 0; left: 0; right: 0;
+    padding: 1.5rem; background: linear-gradient(transparent, var(--k) 30%);
     z-index: 110;
   }
   .btn {
-    background: var(--y); 
-    color: var(--k); 
-    border: none;
-    width: 100%; 
-    padding: 1.2rem; 
-    font-family: 'Space Mono', monospace;
-    font-size: 16px; 
-    font-weight: 700; 
-    letter-spacing: 1px;
-    text-transform: uppercase; 
-    cursor: pointer;
-    box-shadow: 0 4px 30px rgba(255, 242, 0, 0.2);
+    background: var(--y); color: var(--k); border: none;
+    width: 100%; padding: 1.2rem; font-family: 'Space Mono', monospace;
+    font-size: 16px; font-weight: 700; letter-spacing: 1px;
+    text-transform: uppercase; cursor: pointer;
   }
-  .btn:disabled { background: #333; color: #666; box-shadow: none; }
-  .btn:active { transform: scale(0.97); }
+  .btn:disabled { background: #333; color: #666; }
 
-  /* Loading & Result Display */
+  /* Loading & Result */
   .loader { 
-    display: none; 
-    text-align: center; 
-    padding: 3rem 0; 
-    color: var(--y); 
-    font-weight: 700; 
-    animation: blink 0.8s infinite; 
+    display: none; text-align: center; padding: 3rem 0; 
+    color: var(--y); font-weight: 700; animation: blink 0.8s infinite; 
   }
   @keyframes blink { 50% { opacity: 0.2; } }
-  #result-display { 
-    width: 100%; 
-    display: none; 
-    border: 3px solid var(--y); 
-    margin-top: 1rem; 
-  }
+  #result-display { width: 100%; display: none; border: 3px solid var(--y); margin-top: 1rem; }
 
-  /* ONERROR Ticker Area */
   .ticker { 
-    position: absolute; 
-    bottom: 95px; 
-    left: 0; 
-    width: 100%; 
-    background: var(--y); 
-    color: var(--k); 
-    font-size: 11px; 
-    font-weight: 700; 
-    padding: 5px 0; 
-    overflow: hidden; 
-    white-space: nowrap; 
+    position: absolute; bottom: 95px; left: 0; width: 100%; 
+    background: var(--y); color: var(--k); font-size: 11px; 
+    font-weight: 700; padding: 5px 0; overflow: hidden; white-space: nowrap; 
   }
   .ticker div { display: inline-block; animation: tick 20s linear infinite; }
   @keyframes tick { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-
-  .share-hint { font-size: 11px; color: var(--y); margin-top: 1.5rem; text-align: center; display: none; }
 </style>
 </head>
 <body>
 
-<nav>
-  <a href="#" class="logo">ON<span>ERROR</span></a>
-  <div style="font-size: 9px; color: #666;">FUTURE_WARP_STABLE_v1</div>
-</nav>
+<nav><a href="#" class="logo">ON<span>ERROR</span></a><div style="font-size: 9px; color: #666;">WARP_STABLE_v2.1</div></nav>
 
 <main>
   <div id="step-1" class="step">
-    <h1 class="title">WARP YOUR<br>EXPERIENCE</h1>
-    <p class="subtitle">— 미리 가본 2026 크리스마스</p>
-    
+    <h1 class="title">WARP YOUR<br>PRESENCE</h1>
+    <p class="subtitle">— 2026 크리스마스 시뮬레이션</p>
     <div class="upload-container" onclick="document.getElementById('input-file').click()">
       <div id="placeholder-ui">
         <div class="upload-icon" style="text-align:center;">📸</div>
-        <div class="upload-text">본인의 전신 사진을 촬영하세요<br><span style="font-weight:400; font-size:10px; opacity:0.6;">(서버에 저장되지 않습니다)</span></div>
+        <div class="upload-text">전신 사진 촬영/업로드<br><span style="font-weight:400; font-size:10px; opacity:0.6;">(데이터는 전송 후 즉시 삭제됨)</span></div>
       </div>
       <img id="img-preview">
     </div>
@@ -197,41 +127,28 @@
   </div>
 
   <div id="step-2" class="step" style="display:none;">
-    <h1 class="title">SELECT<br>PORTAL</h1>
-    <p class="subtitle">— 워프할 장소와 스타일을 선택하세요</p>
-    
+    <h1 class="title">SELECT<br>SCENE</h1>
+    <p class="subtitle">— 워프할 공간을 선택하세요</p>
     <div class="grid">
-      <div class="card active" onclick="sel(this, 'cafe')">
-        <div class="card-tag">NEW_EXP_01</div>
-        <div class="card-name">X-MAS CAFE</div>
-      </div>
-      <div class="card" onclick="sel(this, 'plaza')">
-        <div class="card-tag">NEW_EXP_02</div>
-        <div class="card-name">NYC PLAZA</div>
-      </div>
-      <div class="card" onclick="sel(this, 'igloo')">
-        <div class="card-tag">NEW_EXP_03</div>
-        <div class="card-name">AURORA IGLOO</div>
-      </div>
-      <div class="card" onclick="sel(this, 'mars')">
-        <div class="card-tag">NEW_EXP_04</div>
-        <div class="card-name">MARS BASE</div>
-      </div>
+      <div class="card active" onclick="sel(this, 'cafe')"><div class="card-tag">EXP_01</div><div class="card-name">X-MAS CAFE</div></div>
+      <div class="card" onclick="sel(this, 'plaza')"><div class="card-tag">EXP_02</div><div class="card-name">NYC PLAZA</div></div>
+      <div class="card" onclick="sel(this, 'igloo')"><div class="card-tag">EXP_03</div><div class="card-name">AURORA IGLOO</div></div>
+      <div class="card" onclick="sel(this, 'mars')"><div class="card-tag">EXP_04</div><div class="card-name">MARS X-MAS</div></div>
     </div>
   </div>
 
   <div id="step-3" class="step" style="display:none;">
-    <h1 class="title">WARP<br>SUCCESS</h1>
+    <h1 class="title">WARP<br>COMPLETE</h1>
     <p class="subtitle">— 시공간 데이터 동기화 완료</p>
-    <div class="loader" id="loader-txt">RECONSTRUCTING PIXELS...</div>
+    <div class="loader" id="loader-txt">RECONSTRUCTING DATA...</div>
     <img id="result-display">
-    <p class="share-hint" id="share-hint">이미지를 길게 눌러 저장 후 인스타에 공유하세요</p>
+    <p id="share-hint" style="display:none; font-size:11px; color:var(--y); margin-top:1.5rem; text-align:center;">이미지를 길게 눌러 저장하세요</p>
   </div>
 </main>
 
 <div class="ticker">
-  <div>ONERROR — FUTURE WARP 2026 — NO DATA STORED — ENJOY NEW EXPERIENCE — BUY NEW EXPERIENCES —&nbsp;</div>
-  <div>ONERROR — FUTURE WARP 2026 — NO DATA STORED — ENJOY NEW EXPERIENCE — BUY NEW EXPERIENCES —&nbsp;</div>
+  <div>ONERROR — FUTURE WARP 2026 — NO DATA STORED — ENJOY NEW EXPERIENCE —&nbsp;</div>
+  <div>ONERROR — FUTURE WARP 2026 — NO DATA STORED — ENJOY NEW EXPERIENCE —&nbsp;</div>
 </div>
 
 <div class="action-bar">
@@ -242,13 +159,12 @@
   // ══════════════════════════════════════════════════════════════
   // CONFIGURATION: FAL.AI KEY (시니어님, 여기에 키를 넣으세요)
   // ══════════════════════════════════════════════════════════════
-  const FAL_KEY = "fc9cd410-9677-4507-8c0e-716d30f2feb6:74a42af0fb42fdbb1630e23c5c3a9acc"; 
+  const FAL_KEY = "03a36b7d-177d-4602-b8ad-699fbd88cb98:4c8a41059c2b9d1a155c5580f4dc50a3"; 
   
   let currentStep = 1;
   let userImgBase64 = null;
   let selectedTarget = 'cafe';
 
-  // 1. 이미지 핸들링 (휘발성 처리)
   function handleFile(input) {
     const file = input.files[0];
     if (file) {
@@ -258,72 +174,62 @@
         document.getElementById('img-preview').src = userImgBase64;
         document.getElementById('img-preview').style.display = 'block';
         document.getElementById('placeholder-ui').style.display = 'none';
-        
-        // 버튼 활성화
         const btn = document.getElementById('cta-btn');
-        btn.disabled = false;
-        btn.innerText = "장소 선택하기 →";
+        btn.disabled = false; btn.innerText = "장소 선택하기 →";
       };
       reader.readAsDataURL(file);
     }
   }
 
-  // 2. 장소 선택
   function sel(el, val) {
     document.querySelectorAll('.card').forEach(c => c.classList.remove('active'));
     el.classList.add('active');
     selectedTarget = val;
   }
 
-  // 3. 단계별 화면 전환 로직
   function handleNext() {
     if (currentStep === 1) {
       document.getElementById('step-1').style.display = 'none';
       document.getElementById('step-2').style.display = 'block';
       document.getElementById('cta-btn').innerText = "워프 시작 ★";
       currentStep = 2;
-      window.scrollTo(0,0);
     } else if (currentStep === 2) {
       triggerWarp();
     } else {
-      location.reload(); // 처음부터 다시 하기
+      location.reload();
     }
   }
 
-  // 4. AI API 호출 (Fal.ai InstantID v2)
+  // ══════════════════════════════════════════════════════════════
+  // FAL.AI API LATEST SPEC (InstantID)
+  // ══════════════════════════════════════════════════════════════
   async function triggerWarp() {
-    if(!FAL_KEY || FAL_KEY.includes("YOUR")) {
-      alert("FAL_KEY가 설정되지 않았습니다. 소스 코드를 확인하세요.");
-      return;
-    }
+    if(!FAL_KEY || FAL_KEY.includes("YOUR")) return alert("FAL_KEY를 확인하세요.");
     
     document.getElementById('step-2').style.display = 'none';
     document.getElementById('step-3').style.display = 'block';
     document.getElementById('loader-txt').style.display = 'block';
-    
     const btn = document.getElementById('cta-btn');
-    btn.disabled = true;
-    btn.innerText = "데이터 전송 중...";
+    btn.disabled = true; btn.innerText = "데이터 전송 중...";
 
     const prompts = {
-      'cafe': "sitting at a wooden table in a cozy, decorated Christmas cafe. Warm bokeh lights, Christmas tree in background, festive mood, high quality.",
-      'plaza': "sitting on a bench in the center of a grand Christmas plaza, glowing giant tree, crowds and city lights in background, realistic.",
-      'igloo': "inside a glass igloo with aurora borealis visible through the ceiling. Luxury winter furniture, snowy view, cinematic lighting.",
-      'mars': "sitting at a futuristic metal table inside a Mars colony hab, red surface and stars visible through reinforced window, high-tech vibe."
+      'cafe': "A sharp, high-quality photo of the person sitting at a cozy Christmas cafe table, warm lighting, festive decor background.",
+      'plaza': "A professional photo of the person at a grand Christmas plaza, giant tree with glowing lights, festive atmosphere.",
+      'igloo': "A cinematic photo of the person inside a glass igloo, aurora borealis visible in the sky, reindeer skins and luxury winter vibe.",
+      'mars': "A sci-fi photo of the person in a Mars habitat, red planet landscape through window, festive decorations on a space-age table."
     };
 
     try {
+      // 최신 fal.ai InstantID 호출 규격
       const response = await fetch("https://api.fal.ai/v1/rw/fal-ai/instantid", {
         method: "POST",
-        headers: { 
-          "Authorization": `Key ${FAL_KEY}`, 
-          "Content-Type": "application/json" 
-        },
+        headers: { "Authorization": `Key ${FAL_KEY}`, "Content-Type": "application/json" },
         body: JSON.stringify({
-          "image_url": userImgBase64,
-          "prompt": `A sharp, realistic photo of the person from the image, ${prompts[selectedTarget]} smiling naturally, detailed skin, 8k.`,
-          "negative_prompt": "ugly, deformed, watermark, text, blur, low quality, cartoon, drawing",
+          "face_image_url": userImgBase64, // 최신 파라미터명
+          "prompt": prompts[selectedTarget],
+          "negative_prompt": "ugly, deformed, text, watermark, blur, low quality, cartoon, anime",
           "ip_adapter_scale": 0.8,
+          "controlnet_conditioning_scale": 0.8,
           "guidance_scale": 7.5
         })
       });
@@ -335,13 +241,13 @@
         resImg.src = data.images[0].url;
         resImg.style.display = 'block';
         document.getElementById('share-hint').style.display = 'block';
-        
-        btn.disabled = false;
-        btn.innerText = "다시 워프하기 ↺";
+        btn.disabled = false; btn.innerText = "다시 워프하기 ↺";
         currentStep = 3;
+      } else {
+        throw new Error(data.detail || "생성 실패");
       }
     } catch (e) {
-      alert("워프 실패: " + e.message);
+      alert("Error: " + e.message);
       location.reload();
     } finally {
       document.getElementById('loader-txt').style.display = 'none';
