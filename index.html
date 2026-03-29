@@ -103,7 +103,46 @@
         const btn = document.getElementById('cta-btn');
         btn.disabled = false; btn.innerText = "장소 선택하기 →";
       };
-      reader.readAsDataURL(file);
+     function handleFile(input) {
+  const file = input.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const img = new Image();
+      img.onload = () => {
+        // 1. 리사이징 설정 (최대 1024px)
+        const canvas = document.createElement('canvas');
+        let width = img.width;
+        let height = img.height;
+        const max_size = 1024; 
+
+        if (width > height) {
+          if (width > max_size) { height *= max_size / width; width = max_size; }
+        } else {
+          if (height > max_size) { width *= max_size / height; height = max_size; }
+        }
+
+        canvas.width = width;
+        canvas.height = height;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0, width, height);
+
+        // 2. 압축된 Base64 추출 (JPEG 퀄리티 0.7)
+        userImgBase64 = canvas.toDataURL('image/jpeg', 0.7);
+        
+        document.getElementById('img-preview').src = userImgBase64;
+        document.getElementById('img-preview').style.display = 'block';
+        document.getElementById('placeholder-ui').style.display = 'none';
+        
+        const btn = document.getElementById('cta-btn');
+        btn.disabled = false; 
+        btn.innerText = "장소 선택하기 →";
+      };
+      img.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+  }
+}
     }
   }
 
